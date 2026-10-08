@@ -1,0 +1,5 @@
+# Los scripts y el Makefile se ejecutan en Linux/WSL2: siempre con fin de línea LF
+*.sh                 text eol=lf
+Makefile             text eol=lf
+practicas/**/*.c     text eol=lf
+practicas/**/*.py    text eol=lf
