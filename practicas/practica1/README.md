@@ -23,7 +23,7 @@ cd .. && python3 scripts/plot.py  # resumen.csv + practica1.png
 
 ## Máquina en la que se midió
 
-Las tablas de `results/` se midieron en la laptop de Salinas Padilla Rubén Iván:
+Las tablas de `results/` se midieron en la laptop con Intel Core i3-1115G4:
 
 | Campo | Valor |
 |---|---|
