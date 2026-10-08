@@ -1,21 +1,79 @@
-# Entrenamiento de una Red Neuronal Simple (MLP) con Paralelismo de Datos
+# cp-6bm1-equipo09 — Cómputo Paralelo · 6BM1 · 27/1
 
-Proyecto integrador para la materia de Cómputo Paralelo (Grupo 6BM1, Semestre 27/1).
-El objetivo es demostrar la aceleración del entrenamiento de un Perceptrón Multicapa (MLP) utilizando el dataset Fashion MNIST, transitando desde una ejecución secuencial hasta una versión distribuida (DDP).
+Repositorio del equipo 9 para las Prácticas 1–6 y el proyecto integrador: **Entrenamiento de una red neuronal simple (MLP) con paralelismo de datos** (ver [`proyecto/`](proyecto/)).
 
-## Integrantes del Equipo
-* Miembro 1 Arce Padilla Carlos
-* Miembro 2 Montes Olguin Jose Alberto
-* Miembro 3 Salinas Padilla Rubén Iván
+## Integrantes
 
-## Requisitos Técnicos y Dependencias
-Para garantizar la reproducibilidad de los experimentos, se requieren las siguientes versiones:
-* Python 3.10 o superior
-* PyTorch 2.0.1
-* Torchvision 0.15.2
-* NumPy 1.24.3
+| Nombre | Boleta | Usuario GitHub |
+|---|---|---|
+| Arce Padilla Carlos | 2024630998 | [carlos15672](https://github.com/carlos15672) |
+| Montes Olguin José Alberto | 2024631047 | [Alberto-debugger](https://github.com/Alberto-debugger) |
+| Salinas Padilla Rubén Iván | 2024630873 | [rubensanilas0117](https://github.com/rubensanilas0117) |
 
-Instalación de dependencias:
-pip install torch==2.0.1 torchvision==0.15.2 numpy==1.24.3
+## Estructura
 
-## Instrucciones de Ejecución
+```
+├── README.md            integrantes y fichas técnicas
+├── .gitignore
+├── practicas/
+│   └── practica1/       entorno, código, scripts, resultados, notebook de GPU y reporte
+└── proyecto/            propuesta y versiones del proyecto integrador
+```
+
+## Fichas técnicas de hardware
+
+### Salinas Padilla Rubén Iván
+
+Máquina en la que se midieron los resultados de la Práctica 1.
+
+| Campo | Valor |
+|---|---|
+| Modelo de CPU | 11th Gen Intel Core i3-1115G4 |
+| Núcleos físicos / hilos lógicos | 2 / 4 |
+| Frecuencia base / turbo | 3.00 GHz / 4.10 GHz (especificación de Intel) |
+| Caché L1d / L2 / L3 | 48 KiB por núcleo / 1.25 MiB por núcleo / 6 MiB compartida |
+| Memoria RAM | 3.7 GiB disponibles para WSL2 |
+| Extensiones vectoriales | SSE4.2, AVX, AVX2, AVX-512F, FMA |
+| Sistema operativo | Ubuntu sobre WSL2 |
+| Compilador | gcc / g++ 15.2.0 |
+| Python / NumPy / BLAS | 3.14.4 / 2.5.3 / OpenBLAS 0.3.34 |
+| GPU | Ninguna NVIDIA accesible desde WSL2; Google Colab Tesla T4 (16 GB) para la Parte E |
+| Condiciones | Laptop conectada a la corriente; se cerraron aplicaciones innecesarias antes de medir |
+
+### Arce Padilla Carlos
+
+| Campo | Valor |
+|---|---|
+| Modelo de CPU | 12th Gen Intel Core i5-12400F |
+| Núcleos físicos / hilos lógicos | 6 / 12 |
+| Frecuencia base / turbo | 2.50 GHz / 4.40 GHz (especificación de Intel) |
+| Caché L1d / L2 / L3 | 48 KiB por núcleo / 1.25 MiB por núcleo / 18 MiB compartida |
+| Memoria RAM | 7.7 GiB disponibles para WSL2 |
+| Extensiones vectoriales | SSE4.2, AVX, AVX2, FMA |
+| Sistema operativo | Ubuntu sobre WSL2 |
+| Compilador | gcc / g++ 15.2.0 |
+| Python / NumPy / BLAS | 3.14.4 / 2.5.3 / OpenBLAS 0.3.34 |
+| GPU | Ninguna NVIDIA accesible desde WSL2 |
+| Condiciones | Ejecución local sobre WSL2, equipo conectado a la corriente |
+
+### Montes Olguin José Alberto
+
+| Campo | Valor |
+|---|---|
+| Modelo de CPU | AMD Ryzen 9 5900HS |
+| Núcleos físicos / hilos lógicos | 8 / 16 |
+| Frecuencia base / turbo | 3.0 GHz / 4.6 GHz (especificación de AMD) |
+| Caché L1d / L2 / L3 | 32 KiB por núcleo / 512 KiB por núcleo / 16 MiB compartida |
+| Memoria RAM | 24 GB |
+| Extensiones vectoriales | SSE4.2, AVX, AVX2, FMA |
+| Sistema operativo | Windows 11; WSL2 pendiente de instalar |
+| Compilador | Pendiente (WSL2) |
+| Python / NumPy / BLAS | Pendiente (WSL2) |
+| GPU | NVIDIA GeForce RTX 3060 Laptop GPU (6 GB) |
+| Condiciones | Pendiente |
+
+## Convenciones
+
+- Rama `main` siempre funcional.
+- Mensajes de commit descriptivos; commits de los tres integrantes.
+- Cada práctica se entrega con una etiqueta (`practica1`, `practica2`, ...).
