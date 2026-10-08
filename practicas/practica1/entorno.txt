@@ -1,0 +1,153 @@
+\\Salinas Padilla Rubén Iván
+
+\\A
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ gcc --version | head -1
+gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ g++ --version | head -1
+g++ (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ python3 --version && python3 -c "import numpy; print('numpy', numpy.__version__)"
+Python 3.14.4
+numpy 2.5.3
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ git --version
+git version 2.53.0
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ echo | gcc -fopenmp -dM -E - | grep -i openmp
+#define _OPENMP 201511
+
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ nano hello_omp.c
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ gcc -fopenmp hello_omp.c -o hello_omp
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ ./hello_omp
+Hola desde el hilo 1 de 4
+Hola desde el hilo 3 de 4
+Hola desde el hilo 2 de 4
+Hola desde el hilo 0 de 4
+
+\\B
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ lscpu
+Architecture:                x86_64
+  CPU op-mode(s):            32-bit, 64-bit
+  Address sizes:             39 bits physical, 48 bits virtual
+  Byte Order:                Little Endian
+CPU(s):                      4
+  On-line CPU(s) list:       0-3
+Vendor ID:                   GenuineIntel
+  Model name:                11th Gen Intel(R) Core(TM) i3-1115G4 @ 3.00GHz
+    CPU family:              6
+    Model:                   140
+    Thread(s) per core:      2
+    Core(s) per socket:      2
+    Socket(s):               1
+    Stepping:                1
+    BogoMIPS:                5990.39
+    Flags:                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr ss
+                             e sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl xtopology
+                              tsc_reliable nonstop_tsc cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pdcm pcid s
+                             se4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor la
+                             hf_lm abm 3dnowprefetch ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow ept vpid ept_ad fsgsb
+                             ase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma
+                              clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves vnmi avx5
+                             12vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rd
+                             pid movdiri movdir64b fsrm avx512_vp2intersect md_clear ibt flush_l1d arch_capabilities
+Virtualization features:
+  Virtualization:            VT-x
+  Hypervisor vendor:         Microsoft
+  Virtualization type:       full
+Caches (sum of all):
+  L1d:                       96 KiB (2 instances)
+  L1i:                       64 KiB (2 instances)
+  L2:                        2.5 MiB (2 instances)
+  L3:                        6 MiB (1 instance)
+NUMA:
+  NUMA node(s):              1
+  NUMA node0 CPU(s):         0-3
+Vulnerabilities:
+  Gather data sampling:      Unknown: Dependent on hypervisor status
+  Ghostwrite:                Not affected
+  Indirect target selection: Mitigation; Aligned branch/return thunks
+  Itlb multihit:             Not affected
+  L1tf:                      Not affected
+  Mds:                       Not affected
+  Meltdown:                  Not affected
+  Mmio stale data:           Not affected
+  Old microcode:             Not affected
+  Reg file data sampling:    Not affected
+  Retbleed:                  Mitigation; Enhanced IBRS
+  Spec rstack overflow:      Not affected
+  Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+  Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+  Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI SW lo
+                             op, KVM SW loop
+  Srbds:                     Not affected
+  Tsa:                       Not affected
+  Tsx async abort:           Not affected
+  Vmscape:                   Not affected
+
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ nproc
+4
+
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ lscpu | grep -o -w -E 'sse4_2|avx|avx2|avx512f|fma|asimd|neon' | sort -u
+avx
+avx2
+avx512f
+fma
+sse4_2
+
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           3.7Gi       416Mi       3.0Gi       3.5Mi       322Mi       3.2Gi
+Swap:          1.0Gi          0B       1.0Gi
+
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ lstopo-no-graphics
+Machine (3739MB total)
+  Package L#0
+    NUMANode L#0 (P#0 3739MB)
+    L3 L#0 (6144KB)
+      L2 L#0 (1280KB) + L1d L#0 (48KB) + L1i L#0 (32KB) + Core L#0
+        PU L#0 (P#0)
+        PU L#1 (P#1)
+      L2 L#1 (1280KB) + L1d L#1 (48KB) + L1i L#1 (32KB) + Core L#1
+        PU L#2 (P#2)
+        PU L#3 (P#3)
+    Net "eth0"
+  HostBridge
+    PCI 2222:00:00.0 (SCSI)
+  HostBridge
+    PCI c162:00:00.0 (3D)
+  Block(Disk) "sdd"
+  Block(Disk) "sdb"
+  Block(Disk) "sdc"
+  Block(Disk) "sda"
+
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor 2>/dev/null
+
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ nvidia-smi
+Command 'nvidia-smi' not found, but can be installed with:
+sudo apt install nvidia-utils-580         # version 580.159.03-0ubuntu0.26.04.1, or
+sudo apt install nvidia-utils-580-server  # version 580.159.03-0ubuntu0.26.04.1
+sudo apt install nvidia-utils-595         # version 595.71.05-0ubuntu0.26.04.1
+sudo apt install nvidia-utils-595-server  # version 595.71.05-0ubuntu0.26.04.1
+
+(cp-env) ruben@LAPTOP-EHOSFET3:~$ python3 -c "import numpy; numpy.show_config()" | grep -i -A3 blas
+/home/ruben/cp-env/lib/python3.14/site-packages/numpy/__config__.py:155: UserWarning: Install `pyyaml` for better output
+  warnings.warn("Install `pyyaml` for better output", stacklevel=1)
+    "blas": {
+      "name": "scipy-openblas",
+      "found": true,
+      "version": "0.3.34.106.0",
+      "detection method": "pkgconfig",
+      "include directory": "/opt/_internal/cpython-3.14.6/lib/python3.14/site-packages/scipy_openblas64/include",
+      "lib directory": "/opt/_internal/cpython-3.14.6/lib/python3.14/site-packages/scipy_openblas64/lib",
+      "openblas configuration": "OpenBLAS 0.3.34.106.0  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64",
+      "pc file directory": "/project/.openblas"
+    },
+    "lapack": {
+      "name": "scipy-openblas",
+      "found": true,
+      "version": "0.3.34.106.0",
+      "detection method": "pkgconfig",
+      "include directory": "/opt/_internal/cpython-3.14.6/lib/python3.14/site-packages/scipy_openblas64/include",
+      "lib directory": "/opt/_internal/cpython-3.14.6/lib/python3.14/site-packages/scipy_openblas64/lib",
+      "openblas configuration": "OpenBLAS 0.3.34.106.0  USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=64",
+      "pc file directory": "/project/.openblas"
+    }
+  },
+  "Python Information": {
