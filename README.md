@@ -60,17 +60,17 @@ Máquina en la que se midieron los resultados de la Práctica 1.
 
 | Campo | Valor |
 |---|---|
-| Modelo de CPU | AMD Ryzen 9 5900HS |
+| Modelo de CPU | AMD Ryzen 9 5900HS with Radeon Graphics |
 | Núcleos físicos / hilos lógicos | 8 / 16 |
-| Frecuencia base / turbo | 3.0 GHz / 4.6 GHz (especificación de AMD) |
+| Frecuencia base / turbo | 3.0 GHz / 4.6 GHz (especificación de AMD; WSL2 no expone la frecuencia) |
 | Caché L1d / L2 / L3 | 32 KiB por núcleo / 512 KiB por núcleo / 16 MiB compartida |
-| Memoria RAM | 24 GB |
+| Memoria RAM | 11 GiB disponibles para WSL2 (24 GB instalados) |
 | Extensiones vectoriales | SSE4.2, AVX, AVX2, FMA |
-| Sistema operativo | Windows 11; WSL2 pendiente de instalar |
-| Compilador | Pendiente (WSL2) |
-| Python / NumPy / BLAS | Pendiente (WSL2) |
-| GPU | NVIDIA GeForce RTX 3060 Laptop GPU (6 GB) |
-| Condiciones | Pendiente |
+| Sistema operativo y kernel | Ubuntu 24.04.5 LTS sobre WSL2, kernel 6.18.40.1-microsoft-standard-WSL2 |
+| Compilador | gcc / g++ 13.3.0 |
+| Python / NumPy / BLAS | 3.12.3 / 2.5.3 / OpenBLAS 0.3.34 |
+| GPU | NVIDIA GeForce RTX 3060 Laptop GPU (6 GB), visible desde WSL2 con `nvidia-smi` (CUDA 13.4) |
+| Condiciones | Laptop conectada a la corriente, plan de energía "Turbo". No se midieron resultados de la Práctica 1 en esta máquina |
 
 ## Convenciones
 
